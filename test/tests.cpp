@@ -1,17 +1,44 @@
-// Copyright 2025 UNN-CS
-
+// Copyright 2026 NNTU-CS
 #include <gtest/gtest.h>
-#include <cstdint>
 #include "alg.h"
 
-
-TEST(st1, sumPrime1) {
-  uint64_t res = sumPrime(2000000);
-  uint64_t expected = 142913828922;
-  EXPECT_EQ(expected, res);
+TEST(CheckPrime, ReturnsFalseForZero) {
+    EXPECT_FALSE(checkPrime(0));
 }
-TEST(st1, sumPrime2) {
-  uint64_t res = sumPrime(10);
-  uint64_t expected = 17;
-  EXPECT_EQ(expected, res);
+TEST(CheckPrime, ReturnsFalseForOne) {
+    EXPECT_FALSE(checkPrime(1));
+}
+TEST(CheckPrime, ReturnsTrueForTwo) {
+    EXPECT_TRUE(checkPrime(2));
+}
+TEST(CheckPrime, ReturnsTrueForSmallPrimes) {
+    EXPECT_TRUE(checkPrime(3));
+    EXPECT_TRUE(checkPrime(5));
+    EXPECT_TRUE(checkPrime(7));
+}
+TEST(CheckPrime, ReturnsFalseForComposites) {
+    EXPECT_FALSE(checkPrime(4));
+    EXPECT_FALSE(checkPrime(9));
+    EXPECT_FALSE(checkPrime(100));
+}
+TEST(NPrime, FirstPrimeIsTwo) {
+    EXPECT_EQ(2u, nPrime(1));
+}
+TEST(NPrime, FifthPrimeIsEleven) {
+    EXPECT_EQ(11u, nPrime(5));
+}
+TEST(NPrime, TenthPrimeIsTwentyNine) {
+    EXPECT_EQ(29u, nPrime(10));
+}
+TEST(NextPrime, NextAfterFourIsFive) {
+    EXPECT_EQ(5u, nextPrime(4));
+}
+TEST(NextPrime, NextAfterElevenIsThirteen) {
+    EXPECT_EQ(13u, nextPrime(11));
+}
+TEST(SumPrime, SumUpToTenIsSeventeen) {
+    EXPECT_EQ(17u, sumPrime(10));
+}
+TEST(SumPrime, SumUpToTwoIsZero) {
+    EXPECT_EQ(0u, sumPrime(2));
 }
